@@ -1,9 +1,10 @@
 package maxim.goy.lab4;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class Club {
+public class Club implements Serializable {
     private String name;
     private Calendar date;
     private String coach;
