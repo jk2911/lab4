@@ -61,15 +61,19 @@ public class Club implements Serializable {
 
     public String toString() {
         String str = getName();
-        int day = date.get(Calendar.DATE);
-        int month = date.get(Calendar.MONTH);
-        int year = date.get(Calendar.YEAR);
-        str += "\n" + (day < 10 ? "0" + day : day) + "." +
-                (month < 10 ? "0" + month : month) + "." +
-                year;
+        str += "\n" + getStringDate();
         str += "\n" + getCoach() + "\n" + getStadium();
         for (String i : getTournament())
             str += "\n   " + i;
         return str;
+    }
+
+    public String getStringDate() {
+        int day = date.get(Calendar.DATE);
+        int month = date.get(Calendar.MONTH) + 1;
+        int year = date.get(Calendar.YEAR);
+        return (day < 10 ? "0" + day : day) + "." +
+                (month < 10 ? "0" + month : month) + "." +
+                year;
     }
 }
