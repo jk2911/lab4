@@ -84,15 +84,9 @@ public class Club implements Serializable {
             return false;
 
         Club c = (Club) o;
-        if (!name.equals(c.name))
-            return false;
+        if (name.equals(c.name) && coach.equals(c.coach) && stadium.equals(c.stadium))
+            return true;
 
-        if (!coach.equals(c.name))
-            return false;
-
-        if (!stadium.equals(c.name))
-            return false;
-
-        return true;
+        return false;
     }
 }

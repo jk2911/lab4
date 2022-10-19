@@ -37,6 +37,11 @@ public class ClubActivity extends AppCompatActivity {
 
         clubs = JsonHelper.importFromJSON(this);
 
+        if (clubs == null)
+            clubs = new ArrayList<>();
+
+        setDateCreate();
+
     }
 
     public void setDate(View v) {
@@ -79,6 +84,8 @@ public class ClubActivity extends AppCompatActivity {
             Toast.makeText(this, "Сохранено", Toast.LENGTH_SHORT).show();
         else
             Toast.makeText(this, "Не удалось сохранить", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     public String getStringCalendar() {
