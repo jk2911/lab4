@@ -5,23 +5,31 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 public class ClubActivity extends AppCompatActivity {
+    private final int Pick_image = 1;
     List<Club> clubs;
     EditText name, coach, stadium;
     TextView date;
     Calendar calendar;
+    ImageView photo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +42,7 @@ public class ClubActivity extends AppCompatActivity {
         coach = findViewById(R.id.coach);
         stadium = findViewById(R.id.stadium);
         date = findViewById(R.id.date);
+        photo = findViewById(R.id.photo);
 
         clubs = JsonHelper.importFromJSON(this);
 
@@ -66,13 +75,10 @@ public class ClubActivity extends AppCompatActivity {
     }
 
     public void save(View v) {
-
-        List<String> tournaments = new ArrayList<>();
         Club club = new Club(name.getText().toString(),
                 calendar,
                 coach.getText().toString(),
-                stadium.getText().toString(),
-                tournaments);
+                stadium.getText().toString());
 
         if (clubs.contains(club)) {
             Toast.makeText(this, "Такой клуб уже есть", Toast.LENGTH_LONG).show();
@@ -95,5 +101,24 @@ public class ClubActivity extends AppCompatActivity {
         return (day < 10 ? "0" + day : day) + "." +
                 (month < 10 ? "0" + month : month) + "." +
                 year;
+    }
+
+    public void setImage(View v) {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, Pick_image);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
+        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+
+        try {
+            final Uri imageUri = imageReturnedIntent.getData();
+            final InputStream imageStream = getContentResolver().openInputStream(imageUri);
+            Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+            photo.setImageBitmap(selectedImage);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

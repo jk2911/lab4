@@ -10,14 +10,14 @@ public class Club implements Serializable {
     private Calendar date;
     private String coach;
     private String stadium;
-    private List<String> tournament;
 
-    public Club(String name, Calendar date, String coach, String stadium, List<String> tournament) {
+
+
+    public Club(String name, Calendar date, String coach, String stadium) {
         this.name = name;
         this.date = date;
         this.coach = coach;
         this.stadium = stadium;
-        this.tournament = tournament;
     }
 
     public String getName() {
@@ -52,20 +52,10 @@ public class Club implements Serializable {
         this.stadium = stadium;
     }
 
-    public List<String> getTournament() {
-        return tournament;
-    }
-
-    public void setTournament(ArrayList<String> tournament) {
-        this.tournament = tournament;
-    }
-
     public String toString() {
         String str = getName();
         str += "\n" + getStringDate();
         str += "\n" + getCoach() + "\n" + getStadium();
-        for (String i : getTournament())
-            str += "\n   " + i;
         return str;
     }
 

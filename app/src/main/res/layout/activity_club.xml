@@ -16,53 +16,43 @@
         app:layout_constraintHorizontal_bias="0.379"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.061" />
+        app:layout_constraintVertical_bias="0.276" />
 
-    <EditText
-        android:id="@+id/coach"
+    <TextView
+        android:id="@+id/date"
         android:layout_width="295dp"
         android:layout_height="66dp"
+        android:onClick="setDate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.379"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.213" />
+        app:layout_constraintVertical_bias="0.574" />
 
     <EditText
         android:id="@+id/stadium"
         android:layout_width="295dp"
         android:layout_height="66dp"
+        android:hint="Стадион"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.379"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.353" />
+        app:layout_constraintVertical_bias="0.475" />
 
-    <TextView
-        android:id="@+id/date"
+    <EditText
+        android:id="@+id/coach"
         android:layout_width="295dp"
-        android:layout_height="35dp"
+        android:layout_height="66dp"
+        android:hint="Тренер"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.379"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.484" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="286dp"
-        android:layout_height="44dp"
-        android:onClick="setDate"
-        android:text="Изменить дату"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.352"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.375" />
 
     <Button
         android:id="@+id/button1"
@@ -76,6 +66,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/date"
         app:layout_constraintVertical_bias="0.863" />
+
+
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="295dp"
+        android:layout_height="168dp"
+        android:onClick="setImage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.379"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.028" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
