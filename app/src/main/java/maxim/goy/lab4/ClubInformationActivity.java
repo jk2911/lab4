@@ -59,7 +59,8 @@ public class ClubInformationActivity extends AppCompatActivity {
     }
 
     public void goSocialNet(View v) {
-
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www." + club.getLink()));
+        startActivity(intent);
     }
 
     public void back(View v) {
