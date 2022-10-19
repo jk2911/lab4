@@ -45,6 +45,7 @@
     <TextView
         android:id="@+id/phone"
         style="@style/ViewInfo"
+        android:onClick="goPhone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,6 +55,7 @@
     <TextView
         android:id="@+id/email"
         style="@style/ViewInfo"
+        android:onClick="goEmail"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,6 +65,7 @@
     <TextView
         android:id="@+id/link"
         style="@style/ViewInfo"
+        android:onClick="goSocialNet"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
