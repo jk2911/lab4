@@ -8,9 +8,8 @@
 
     <EditText
         android:id="@+id/name"
-        android:layout_width="295dp"
-        android:layout_height="66dp"
         android:hint="Название"
+        style="@style/View"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.379"
@@ -20,44 +19,77 @@
 
     <TextView
         android:id="@+id/date"
-        android:layout_width="295dp"
-        android:layout_height="66dp"
+        style="@style/View"
+        android:gravity="center"
         android:onClick="setDate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.379"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.574" />
+        app:layout_constraintTop_toBottomOf="@+id/stadium"
+        app:layout_constraintVertical_bias="0.029" />
 
     <EditText
         android:id="@+id/stadium"
-        android:layout_width="295dp"
-        android:layout_height="66dp"
+        style="@style/View"
         android:hint="Стадион"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.379"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.475" />
+        app:layout_constraintTop_toBottomOf="@+id/coach"
+        app:layout_constraintVertical_bias="0.027" />
 
     <EditText
         android:id="@+id/coach"
-        android:layout_width="295dp"
-        android:layout_height="66dp"
+        style="@style/View"
         android:hint="Тренер"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.379"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.375" />
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintVertical_bias="0.017" />
+
+    <EditText
+        android:id="@+id/phone"
+        style="@style/View"
+        android:hint="Телефон"
+        android:inputType="phone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.379"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date"
+        app:layout_constraintVertical_bias="0.036" />
+
+    <EditText
+        android:id="@+id/email"
+        style="@style/View"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.379"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phone"
+        app:layout_constraintVertical_bias="0.038" />
+
+    <EditText
+        android:id="@+id/link"
+        style="@style/View"
+        android:hint="Ccылка"
+        android:inputType="textUri"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.379"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintVertical_bias="0.066" />
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="286dp"
-        android:layout_height="44dp"
+        style="@style/View"
         android:onClick="save"
         android:text="Сохранить"
         app:layout_constraintBottom_toBottomOf="parent"

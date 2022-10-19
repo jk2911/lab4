@@ -11,13 +11,43 @@ public class Club implements Serializable {
     private String coach;
     private String stadium;
 
+    private String phone;
+    private String email;
+    private String link;
 
 
-    public Club(String name, Calendar date, String coach, String stadium) {
+    public Club(String name, Calendar date, String coach, String stadium, String phone, String email, String link) {
         this.name = name;
         this.date = date;
         this.coach = coach;
         this.stadium = stadium;
+        this.phone = phone;
+        this.email = email;
+        this.link = link;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public String getName() {

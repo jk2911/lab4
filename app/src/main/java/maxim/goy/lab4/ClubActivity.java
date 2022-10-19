@@ -26,7 +26,7 @@ import java.util.List;
 public class ClubActivity extends AppCompatActivity {
     private final int Pick_image = 1;
     List<Club> clubs;
-    EditText name, coach, stadium;
+    EditText name, coach, stadium, phone, email, link;
     TextView date;
     Calendar calendar;
     ImageView photo;
@@ -43,6 +43,9 @@ public class ClubActivity extends AppCompatActivity {
         stadium = findViewById(R.id.stadium);
         date = findViewById(R.id.date);
         photo = findViewById(R.id.photo);
+        phone=findViewById(R.id.phone);
+        email =findViewById(R.id.email);
+        link=findViewById(R.id.link);
 
         clubs = JsonHelper.importFromJSON(this);
 
@@ -78,7 +81,10 @@ public class ClubActivity extends AppCompatActivity {
         Club club = new Club(name.getText().toString(),
                 calendar,
                 coach.getText().toString(),
-                stadium.getText().toString());
+                stadium.getText().toString(),
+                phone.getText().toString(),
+                email.getText().toString(),
+                link.getText().toString());
 
         if (clubs.contains(club)) {
             Toast.makeText(this, "Такой клуб уже есть", Toast.LENGTH_LONG).show();
