@@ -3,15 +3,16 @@ package maxim.goy.lab4;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class Club implements Serializable {
     private String name;
     private Calendar date;
     private String coach;
     private String stadium;
-    private ArrayList<String> tournament;
+    private List<String> tournament;
 
-    public Club(String name, Calendar date, String coach, String stadium, ArrayList<String> tournament) {
+    public Club(String name, Calendar date, String coach, String stadium, List<String> tournament) {
         this.name = name;
         this.date = date;
         this.coach = coach;
@@ -51,7 +52,7 @@ public class Club implements Serializable {
         this.stadium = stadium;
     }
 
-    public ArrayList<String> getTournament() {
+    public List<String> getTournament() {
         return tournament;
     }
 
@@ -75,5 +76,23 @@ public class Club implements Serializable {
         return (day < 10 ? "0" + day : day) + "." +
                 (month < 10 ? "0" + month : month) + "." +
                 year;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || o.getClass() != getClass())
+            return false;
+
+        Club c = (Club) o;
+        if (!name.equals(c.name))
+            return false;
+
+        if (!coach.equals(c.name))
+            return false;
+
+        if (!stadium.equals(c.name))
+            return false;
+
+        return true;
     }
 }

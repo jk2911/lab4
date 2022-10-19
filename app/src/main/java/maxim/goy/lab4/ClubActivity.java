@@ -12,10 +12,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class ClubActivity extends AppCompatActivity {
+    List<Club> clubs;
     EditText name, coach, stadium;
     TextView date;
     Club club;
@@ -36,14 +39,14 @@ public class ClubActivity extends AppCompatActivity {
         stadium = findViewById(R.id.stadium);
         date = findViewById(R.id.date);
 
-        if (club == null)
-            Toast.makeText(this, "null", Toast.LENGTH_LONG).show();
-        else {
-            name.setText(club.getName());
-            coach.setText(club.getCoach());
-            stadium.setText(club.getStadium());
-            date.setText(club.getStringDate());
-        }
+        name.setText(club.getName());
+        coach.setText(club.getCoach());
+        stadium.setText(club.getStadium());
+        date.setText(club.getStringDate());
+
+        clubs = JsonHelper.importFromJSON(this);
+        clubs.remove(club);
+
     }
 
     public void setDate(View v) {
@@ -63,5 +66,13 @@ public class ClubActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     public void setDateCreate() {
         date.setText(club.getStringDate());
+    }
+
+    public void save(View v){
+        clubs.add(club);
+        if(JsonHelper.exportToJSON(this,clubs))
+            Toast.makeText(this,"Сохранено",Toast.LENGTH_SHORT);
+        else
+            Toast.makeText(this,"Не удалось сохранить",Toast.LENGTH_SHORT);
     }
 }
