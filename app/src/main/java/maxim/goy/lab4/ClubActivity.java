@@ -21,7 +21,6 @@ public class ClubActivity extends AppCompatActivity {
     List<Club> clubs;
     EditText name, coach, stadium;
     TextView date;
-    Club club;
     Calendar calendar;
 
     @Override
@@ -29,23 +28,14 @@ public class ClubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club);
 
-        Bundle intent = getIntent().getExtras();
-
-        club = (Club) intent.getSerializable("club");
-        calendar = club.getDate();
+        calendar = new GregorianCalendar();
 
         name = findViewById(R.id.name);
         coach = findViewById(R.id.coach);
         stadium = findViewById(R.id.stadium);
         date = findViewById(R.id.date);
 
-        name.setText(club.getName());
-        coach.setText(club.getCoach());
-        stadium.setText(club.getStadium());
-        date.setText(club.getStringDate());
-
         clubs = JsonHelper.importFromJSON(this);
-        clubs.remove(club);
 
     }
 
@@ -58,21 +48,45 @@ public class ClubActivity extends AppCompatActivity {
 
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            club.setDate(new GregorianCalendar(year, monthOfYear, dayOfMonth));
+            calendar.set(Calendar.YEAR, year);
+            calendar.set(Calendar.MONTH, monthOfYear);
+            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
             setDateCreate();
         }
     };
 
     @SuppressLint("SetTextI18n")
     public void setDateCreate() {
-        date.setText(club.getStringDate());
+        date.setText(getStringCalendar());
     }
 
-    public void save(View v){
+    public void save(View v) {
+
+        List<String> tournaments = new ArrayList<>();
+        Club club = new Club(name.getText().toString(),
+                calendar,
+                coach.getText().toString(),
+                stadium.getText().toString(),
+                tournaments);
+
+        if (clubs.contains(club)) {
+            Toast.makeText(this, "Такой клуб уже есть", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         clubs.add(club);
-        if(JsonHelper.exportToJSON(this,clubs))
-            Toast.makeText(this,"Сохранено",Toast.LENGTH_SHORT);
+        if (JsonHelper.exportToJSON(this, clubs))
+            Toast.makeText(this, "Сохранено", Toast.LENGTH_SHORT).show();
         else
-            Toast.makeText(this,"Не удалось сохранить",Toast.LENGTH_SHORT);
+            Toast.makeText(this, "Не удалось сохранить", Toast.LENGTH_SHORT).show();
+    }
+
+    public String getStringCalendar() {
+        int day = calendar.get(Calendar.DATE);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int year = calendar.get(Calendar.YEAR);
+        return (day < 10 ? "0" + day : day) + "." +
+                (month < 10 ? "0" + month : month) + "." +
+                year;
     }
 }
