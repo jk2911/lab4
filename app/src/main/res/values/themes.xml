@@ -17,4 +17,9 @@
         <item name="android:layout_height">45dp</item>
         <item name="android:layout_width">295dp</item>
     </style>
+    <style name="ViewInfo">
+        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_width">295dp</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>
